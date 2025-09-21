@@ -305,9 +305,12 @@ func main() {
 
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
-    AllowOrigins: []string{"https://youtube-trends-finder.vercel.app/"},
-    AllowMethods: []string{"GET", "POST"},
-    AllowHeaders: []string{"Content-Type"},
+    AllowOrigins:     []string{"https://youtube-trends-finder.vercel.app"}, // フロントのURL
+    AllowMethods:     []string{"GET", "POST", "OPTIONS"},
+    AllowHeaders:     []string{"Origin", "Content-Type"},
+    ExposeHeaders:    []string{"Content-Length"},
+    AllowCredentials: true,
+    MaxAge:           12 * time.Hour,
     }))
 
 	// router.Static("/", "./frontend")
@@ -319,6 +322,7 @@ func main() {
 	}
 	router.Run("0.0.0.0:" + port)
 }
+
 
 
 
