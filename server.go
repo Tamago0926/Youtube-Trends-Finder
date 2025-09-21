@@ -304,7 +304,11 @@ func main() {
 	}
 
 	router := gin.Default()
-	router.Use(cors.Default())
+	router.Use(cors.New(cors.Config{
+    AllowOrigins: []string{"https://youtube-trends-finder-front-end.vercel.app/"},
+    AllowMethods: []string{"GET", "POST"},
+    AllowHeaders: []string{"Content-Type"},
+    }))
 
 	// router.Static("/", "./frontend")
 	router.GET("/youtube/main_trend/data", youtube_main_data_text)
@@ -315,3 +319,4 @@ func main() {
 	}
 	router.Run("0.0.0.0:" + port)
 }
+
