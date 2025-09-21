@@ -10,7 +10,6 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
 var YOUTUBE_API_KEY string
@@ -299,10 +298,6 @@ func keyword_trend_get(keyword string) []DATAS {
 }
 
 func main() {
-	err := godotenv.Load("keys.env")
-	if err != nil {
-		fmt.Println("Error loading .env file")
-	}
 	YOUTUBE_API_KEY = os.Getenv("YOUTUBE_API_KEY")
 	if YOUTUBE_API_KEY == "" {
 		fmt.Println("YOUTUBE_API_KEY is not set in environment variables")
@@ -314,5 +309,9 @@ func main() {
 	// router.Static("/", "./frontend")
 	router.GET("/youtube/main_trend/data", youtube_main_data_text)
 	router.POST("/youtube/key_word_trend/data", youtube_key_word_data_text)
-	router.Run("localhost:8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	router.Run("0.0.0.0:" + port)
 }
