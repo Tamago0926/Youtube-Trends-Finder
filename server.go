@@ -305,7 +305,7 @@ func main() {
 
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
-    AllowOrigins: []string{"https://youtube-trends-finder-front-end.vercel.app/"},
+    AllowOrigins: []string{"https://youtube-trends-finder.vercel.app/"},
     AllowMethods: []string{"GET", "POST"},
     AllowHeaders: []string{"Content-Type"},
     }))
@@ -319,4 +319,5 @@ func main() {
 	}
 	router.Run("0.0.0.0:" + port)
 }
+
 
