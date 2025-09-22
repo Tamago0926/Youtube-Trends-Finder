@@ -306,7 +306,10 @@ func main() {
 
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
-    AllowOrigins:     []string{"https://youtube-trends-finder.vercel.app"}, // フロントのURL
+    AllowOrigins:     []string{
+		"https://youtube-trends-finder.vercel.app",
+		"https://tamago0926.github.io/Youtube-Trends-Finder-FrontEnd/",
+	}, // フロントのURL
     AllowMethods:     []string{"GET", "POST", "OPTIONS"},
     AllowHeaders:     []string{"Origin", "Content-Type"},
     ExposeHeaders:    []string{"Content-Length"},
@@ -323,6 +326,7 @@ func main() {
 	}
 	router.Run("0.0.0.0:" + port)
 }
+
 
 
 
