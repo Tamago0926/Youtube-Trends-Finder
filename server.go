@@ -366,10 +366,6 @@ func keyword_trend_get(keyword string) []DATAS {
 }
 
 func main() {
-	err := godotenv.Load("keys.env")
-	if err != nil {
-		fmt.Println("Error loading .env file")
-	}
 	YOUTUBE_API_KEY = os.Getenv("YOUTUBE_API_KEY")
 	if YOUTUBE_API_KEY == "" {
 		fmt.Println("YOUTUBE_API_KEY is not set in environment variables")
@@ -395,3 +391,4 @@ func main() {
 	}
 	router.Run("0.0.0.0:" + port)
 }
+
