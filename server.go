@@ -11,7 +11,6 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
 var YOUTUBE_API_KEY string
@@ -391,4 +390,5 @@ func main() {
 	}
 	router.Run("0.0.0.0:" + port)
 }
+
 
